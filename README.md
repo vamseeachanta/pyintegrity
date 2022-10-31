@@ -34,7 +34,6 @@ Per the API 579 damage classes, the following schematics shows the pyintegrity c
 <img src="docs/ffs_scope.svg" width=auto, height=auto/>
 
 
-
 # Key References
 
 Key references used for the package development are:
