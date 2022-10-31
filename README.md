@@ -2,12 +2,6 @@
 
 Fitness for service assessment is the analysis both the present integrity of the component given the current state of damage and the projected remaining life
 
-# Scope
-
-Per the API 579 damage classes, this module currently covers the following
-Corrosion/Erosion
-
-
 # Summary
 
 **#TODO**
@@ -25,6 +19,13 @@ See examples files to set up the General Metal Loss (GML) and Local Metal Loss (
 - GML and LML, API 1111 design code, see [16in_gas](https://github.com/vamseeachanta/pyintegrity/blob/c61594eff1455ca7741b3a61ab55e44495bb1eee/src/pyintegrity/tests/test_pyintegrity_gml_lml_b318_1.py)
 
 # Assumptions
+
+# Scope
+
+Per the API 579 damage classes, the following schematics shows the pyintegrity current scope:
+
+<img src="docs/ffs_scope.svg" width=auto, height=auto/>
+
 
 
 # Key References

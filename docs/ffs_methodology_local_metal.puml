@@ -1,4 +1,4 @@
-@startuml ffs_methodology
+@startuml ffs_methodology_local_metal
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
 skinparam titleBorderColor red
@@ -29,7 +29,6 @@ title FFS Methodology \n Corrosion/Erosion \n Localized Metal Loss
             etc.
         end note
 
-
     --> Perform Level 1, Part 5
         if "FCA not Acceptable" then
         --> Adjust FCA (or) Perform Level 2, Part 5
@@ -44,7 +43,6 @@ title FFS Methodology \n Corrosion/Erosion \n Localized Metal Loss
                 Next inspection
                 Future monitoring requirements
         end note
-
 
 footer
 %date("yyyy.MM.dd' at 'HH:mm")

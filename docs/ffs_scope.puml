@@ -6,7 +6,7 @@ skinparam titleBorderThickness 2
 skinparam titleBorderColor red
 skinparam titleBackgroundColor Tomato
 
-title API579 FFS Assessment | pyffs Scope \n Corrosion/Erosion
+title API579 FFS Assessment | pyintegrity Scope \n Corrosion/Erosion
 
 package "Damage Classes" as dc {
 component "Brittle Fracture" as brittle
@@ -19,7 +19,7 @@ component "Fatigue Damage" as Fatigue
 }
 
 package "Corrosion/Erosion" as ce {
-    package "pyffs Scope" as pyffsscope {
+    package "pyintegrity Scope" as pyintegrityscope {
     agent "Part4 \n Assessment of General Metal Loss" as corrosion_part4
     agent "Part5 \n Assessment of Localized Metal Loss" as corrosion_part5
     }
