@@ -9,12 +9,12 @@ Contact:
 
 More information is available at:
 
-- https://pypi.org/project/pyffs/
-- https://github.com/vamseeachanta/pyffs
+- https://pypi.org/project/pyintegrity/
+- https://github.com/vamseeachanta/pyintegrity
 
 
 Version:
 --------
 
-- pyffs v0.0.1
+- pyintegrity v0.0.1
 """

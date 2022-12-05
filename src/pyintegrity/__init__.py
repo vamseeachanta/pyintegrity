@@ -1,6 +1,6 @@
 """Fitness for service assessment for metallic structures
 
-See https://github.com/vamseeachanta/pyffs/ for more information.
+See https://github.com/vamseeachanta/pyintegrity/ for more information.
 """
 
 # Version of package
