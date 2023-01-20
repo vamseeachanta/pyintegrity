@@ -39,7 +39,7 @@ class ReadData():
             cfg_temp = cfg
 
         if cfg_temp.__contains__('sheet_name'):
-            result = pd.read_excel(['io'],
+            result = pd.read_excel(cfg_temp['io'],
                                    sheet_name=cfg_temp['sheet_name'],
                                    skiprows=cfg_temp['skiprows'],
                                    skipfooter=cfg_temp['skipfooter'],

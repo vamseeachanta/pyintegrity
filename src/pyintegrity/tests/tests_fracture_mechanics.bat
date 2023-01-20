@@ -1,4 +1,8 @@
-python src\pyintegrity\tests\test_pyintegrity_gml_lml_api1111_1.py
-python src\pyintegrity\tests\test_pyintegrity_gml_lml_b314_1.py
-python src\pyintegrity\tests\test_pyintegrity_gml_lml_b314_2.py
-python src\pyintegrity\tests\test_pyintegrity_gml_lml_b318_1.py
+python src\pyintegrity\tests\test_pyintegrity_bs7910.py
+REM python src\pyintegrity\tests\test_pyintegrity_bs7910_ecs_2500ft_buoy_jt.py
+REM python src\pyintegrity\tests\test_pyintegrity_bs7910_ecs_2500ft_buoy_jt.py
+REM python src\pyintegrity\tests\test_pyintegrity_bs7910_ecs_2500ft_buoy_jt.py
+REM python src\pyintegrity\tests\test_pyintegrity_bs7910_ecs_2500ft_buoy_jt.py
+REM python src\pyintegrity\tests\test_pyintegrity_bs7910_ecs_2500ft_buoy_jt.py
+REM python src\pyintegrity\tests\test_pyintegrity_bs7910_ecs_2500ft_buoy_jt.py
+REM python src\pyintegrity\tests\test_pyintegrity_bs7910_ecs_2500ft_buoy_jt.py

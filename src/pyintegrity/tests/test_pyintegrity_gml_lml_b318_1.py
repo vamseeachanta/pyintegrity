@@ -6,7 +6,7 @@ from pyintegrity.common.update_deep import AttributeDict
 from pyintegrity.common.ApplicationManager import ConfigureApplicationInputs
 from pyintegrity.API579 import API579
 
-ymlfile = 'src/pyintegrity/tests/test_data/16in_gas_b318.yml'
+ymlfile = 'src/pyintegrity/tests/test_data/API579/16in_gas_b318.yml'
 sys.argv.append(ymlfile)
 print(os.path.isfile(ymlfile))
 cfg = ymlInput(ymlfile, updateYml=None)
