@@ -1,6 +1,18 @@
+import logging
+import math
+import numpy as np
+import pandas as pd
+from multiprocessing import Pool
+
+from pyintegrity.common.data import AttributeDict
+from pyintegrity.common.data import ReadData
+from pyintegrity.common.data import AttributeDict
+from pyintegrity.common.math_solvers import Scipy_Interpolation
+from pyintegrity.common.parallel_process_components import \
+    ParallelProcessComponents
+
 class BS7910_2013():
     def __init__(self, cfg, fad):
-        from common.data import AttributeDict
         self.cfg = cfg
         self.flaw = AttributeDict(self.cfg.flaw)
         self.fad = fad
@@ -8,15 +20,11 @@ class BS7910_2013():
         self.init_read_stress_intensity_solution_tables()
 
     def init_read_stress_intensity_solution_tables(self):
-        from common.data import ReadData
         read_data = ReadData()
         cfg_temp = {'files' : self.cfg.default['stress_intensity_factor_solution_tables']}
         self.stress_intensity_solution_tables = read_data.from_xlsx(cfg_temp)
 
     def get_critical_allowable_flaw(self):
-        import logging
-
-        from common.data import AttributeDict
         logging.info("Input Flaw ...")
         self.get_flaw_fad_properties()
         self.get_K_r_allowable()
@@ -33,14 +41,12 @@ class BS7910_2013():
         pass
 
     def get_K_r_allowable(self):
-        import numpy as np
         try:
             self.K_r_allowable = np.interp(self.L_r, self.fad['option_1']['L_r'], self.fad['option_1']['K_r'])
         except:
             print("Could not evaluate self.K_r_allowable. Check results using breakpoint in function 'get_K_r_allowable' ")
 
     def iterate_flaw_length_for_unstable_limits(self):
-        import pandas as pd
 
         self.critical_allowable_flaw_df = pd.DataFrame(columns=self.cfg.default['settings']['fad_properties_columns'])
         a_start = self.cfg.default['settings']['a_array']['start']
@@ -54,7 +60,6 @@ class BS7910_2013():
                 self.iterate_flaw_length_for_unstable_limits_for_single_c_value(a_nsteps, a_start, a_step, c)
 
     def iterate_flaw_length_for_unstable_limits_for_single_c_value(self, a_nsteps, a_start, a_step, c):
-        import pandas as pd
         self.flaw.dimensions['c'] = c
         for flaw_theta in self.cfg.default['settings']['theta_array']:
             self.flaw.theta = flaw_theta
@@ -87,7 +92,6 @@ class BS7910_2013():
                 df_index - 1]
 
     def get_flaw_fad_properties(self):
-        import logging
 
         # TODO implement crack face pressure for pressurized components
         logging.info("Flaw analysis ...")
@@ -141,7 +145,6 @@ class BS7910_2013():
         self.reference_stress_annex = reference_stress_annex
 
     def get_stress_intensity_factor_solution(self, stress_intensity_key):
-        import math
         M = self.M
         fw = self.fw
         if ((self.flaw.location in ['external_surface', 'internal_surface']) and self.flaw.orientation in [
@@ -191,7 +194,6 @@ class BS7910_2013():
         self.delta_K_I = self.Y_delta_sigma_primary * math.sqrt(math.pi * self.flaw.dimensions['a'])
 
     def get_finite_width_correction_factor(self):
-        import math
         if self.stress_intensity_annex in ['Annex_M_7_2_2', 'Annex_M_7_2_4', 'Annex_M_7_3_2']:
             fw = 1
         elif self.stress_intensity_annex in ['Annex_M_7_3_4', 'Annex_M_4_1']:
@@ -218,7 +220,6 @@ class BS7910_2013():
         reference_function()
 
     def get_stress_intensity_factor_solution_Annex_M_4_1(self):
-        import math
 
         self.assign_key_flaw_dimensions_for_calculations()
         self.perform_flaw_dimension_acceptance_check()
@@ -259,7 +260,6 @@ class BS7910_2013():
         self.M_b = H * self.M_m
 
     def get_stress_intensity_factor_solution_Annex_M_4_3(self):
-        import math
 
         self.assign_key_flaw_dimensions_for_calculations()
         self.perform_flaw_dimension_acceptance_check()
@@ -331,7 +331,6 @@ class BS7910_2013():
         }
 
     def get_stress_intensity_factor_solution_Annex_M_7_3_2(self):
-        import math
 
         self.assign_key_flaw_dimensions_for_calculations()
         self.perform_flaw_dimension_acceptance_check()
@@ -353,7 +352,6 @@ class BS7910_2013():
         self.get_stress_intensity_factor_solution_Annex_M_4_3()
 
     def get_stress_intensity_solution_by_table_data(self, stress_intensity_solution_table):
-        import pandas as pd
         a_over_B = self.a / self.B
         a_over_c = self.a / self.c
         if stress_intensity_solution_table in ['Table_M_2', 'Table_M_4', 'Table_M_7']:
@@ -375,7 +373,6 @@ class BS7910_2013():
 
     def dataframe_manual_interpolation_using_scipy(self, B_over_ri, a_over_B, a_over_c, df, theta, theta_location):
         # Approximate method. Still with high computational cost. Not used
-        from common.math_solvers import Scipy_Interpolation
         scipy_interp = Scipy_Interpolation()
         a_over_B_list = df[df['theta'] == theta].a_over_B.to_list()
         a_over_c_list = df[df['theta'] == theta].a_over_c.to_list()
@@ -462,7 +459,6 @@ class BS7910_2013():
         return M_m, M_b
 
     def perform_flaw_dimension_acceptance_check(self):
-        import logging
         a_over_B_flag = False
         a_over_c_flag = False
         B_over_ri_flag = False
@@ -560,7 +556,6 @@ class BS7910_2013():
         self.reference_stress = reference_function()
 
     def get_reference_stress_Equation_P_23(self):
-        import math
 
         if (math.pi * self.radius) >= (self.c + self.B):
             alpha_double_dash = (self.a / self.B) / (1 + self.B / self.c)
@@ -575,7 +570,6 @@ class BS7910_2013():
         return sigma_reference
 
     def get_reference_stress_Equation_P_18(self):
-        import math
 
         if self.W >= 2*(self.c + self.B):
             alpha_double_dash = (self.a / self.B) / (1 + self.B / self.c)
@@ -592,7 +586,6 @@ class BS7910_2013():
         return sigma_ref
 
     def get_reference_stress_Equation_P_11(self):
-        import math
 
         if self.W >= 2*(self.c+self.B):
             self.alpha_double_dash = (2 * self.a / self.B) / (1 + self.B / self.c)
@@ -676,21 +669,18 @@ class BS7910_2013():
         self.V = V
 
     def get_phi_value(self):
-        import math
         if (self.a/2/self.c >=0) and (self.a/2/self.c <=0.5):
             self.phi = math.sqrt(1 + 1.464*(self.a/self.c)**1.65)
         else:
             self.phi = math.sqrt(1 + 1.464*(self.c/self.a)**1.65)
 
     def get_f_theta_value(self, theta):
-        import math
         if (self.a/2/self.c >=0) and (self.a/2/self.c <=0.5):
             self.f_theta = ( (self.a/self.c)**2 * (math.cos(theta))**2 + (math.sin(theta))**2 )**0.25
         else:
             self.f_theta = ( (self.c/self.a)**2 * (math.sin(theta))**2 + (math.cos(theta))**2 )**0.25
 
     def assign_key_flaw_dimensions_for_calculations(self):
-        import math
         self.ri = self.cfg.pipe_properties['geometry']['Nominal_ID']/2*25.4
         self.B = self.cfg.Outer_Pipe['Geometry']['Design_WT']*25.4
         self.theta = math.radians(self.flaw.theta)
@@ -707,12 +697,6 @@ class BS7910_2013():
     # TODO combine approximate and actual flaw growth functions (get_approximate_flaw_growth_due_to_histograms, get_flaw_growth_due_to_histograms)
     def get_approximate_flaw_growth_due_to_histograms(self, histograms, bending_factor):
         self.cfg.default['settings']['stress_intensity_factor_solution'] = 'constant_values'
-        from multiprocessing import Pool
-
-        import pandas as pd
-
-        from common.parallel_process_components import \
-            ParallelProcessComponents
 
         if self.cfg.default['settings']['multi_process']:
             pp = ParallelProcessComponents(cfg=None)
@@ -751,12 +735,6 @@ class BS7910_2013():
             print("...... for {0} ... COMPLETE \n" .format(component_name))
 
     def get_flaw_growth_due_to_histograms(self, histograms, bending_factor):
-        from multiprocessing import Pool
-
-        import pandas as pd
-
-        from common.parallel_process_components import \
-            ParallelProcessComponents
 
         self.cfg.default['settings']['stress_intensity_factor_solution'] = 'table'
         if self.cfg.default['settings']['multi_process']:
@@ -796,7 +774,6 @@ class BS7910_2013():
 
     def get_flaw_growth_for_single_flaw_location(self, bending_factor, component_index, f_o_s, histograms,
                                                  location_item, flaw_orientation):
-        import pandas as pd
         self.flaw_growth_for_single_flaw_location_df = pd.DataFrame(
             columns=self.cfg.default['settings']['flaw_growth_properties_columns'])
         self.flaw.location = location_item
@@ -877,7 +854,6 @@ class BS7910_2013():
         return self.flaw_growth_for_single_flaw_location_df
 
     def get_flaw_growth_from_one_cycle(self):
-        import logging
         self.get_flaw_fad_properties()
         if self.delta_K_I <= self.cfg.paris_curve['transfer_delta_K']:
             self.delta_a_per_cycle_stress = self.cfg.paris_curve['A_1']*(self.delta_K_I)**self.cfg.paris_curve['m_1']
@@ -888,7 +864,6 @@ class BS7910_2013():
                                                                                             self.delta_a_per_cycle_stress))
 
     def get_initial_allowable_flaw_for_life(self, histograms):
-        import pandas as pd
         self.initial_allowable_flaw_df = pd.DataFrame(
             columns=self.cfg.default['settings']['flaw_growth_properties_columns'])
 
@@ -913,7 +888,6 @@ class BS7910_2013():
 
     def get_approximate_flaw_growth_solution_for_single_flaw_location(self, bending_factor, component_index, f_o_s, histograms,
                                                  location_item, service_life, flaw_orientation):
-        import pandas as pd
         self.approximate_allowable_initial_flaw_analysis_single_flaw_location_df = pd.DataFrame(
             columns=self.cfg.default['settings']['approximate_initial_flaw_properties_columns'])
 

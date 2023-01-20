@@ -160,7 +160,7 @@ class ConfigureApplicationInputs():
 
     def unify_application_and_default_and_custom_yamls(self, run_dict):
         self.ApplicationInputFile = os.getcwd(
-        ) + '\\src\\pyffs\\tests\\test_data\\' + self.basename + '.yml'
+        ) + '\\src\\pyintegrity\\tests\\test_data\\' + self.basename + '.yml'
         self.get_custom_file(run_dict)
         # Get updated configuration file for Analysis
         self.cfg = self.generateYMLInput(run_dict)

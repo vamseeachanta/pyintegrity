@@ -1,5 +1,11 @@
 import logging
 
+from pyintegrity.common.data import AttributeDict, ReadData
+from pyintegrity.common.fad import FAD
+from pyintegrity.common.BS7910_critical_flaw_limits import BS7910_2013
+from pyintegrity.custom.PipeSizing import PipeSizing
+from pyintegrity.common.visualizations import Visualization
+
 
 class FractureMechanicsComponents():
 
@@ -8,19 +14,16 @@ class FractureMechanicsComponents():
         self.init_add_pipe_properties_to_cfg()
 
     def evaluate_FAD(self):
-        from common.fad import FAD
         print("Fatigue Assessment Diagram (FAD) analysis ....")
         fatigue_assessment_diagram = FAD(self.cfg)
         self.fad = fatigue_assessment_diagram.get_BS7910_2013_FAD()
         print("Fatigue Assessment Diagram (FAD) analysis .... COMPLETED")
 
     def critical_flaw_limits(self):
-        from common.BS7910_critical_flaw_limits import BS7910_2013
         self.bs7910_2013_critical_flaw = BS7910_2013(self.cfg, self.fad)
         self.bs7910_2013_critical_flaw.get_critical_allowable_flaw()
 
     def get_flaw_growth_for_fatigue_loading(self):
-        from common.BS7910_critical_flaw_limits import BS7910_2013
         self.bs7910_2013_flaw_growth = BS7910_2013(self.cfg, self.fad)
         self.get_histogram_loading()
         # TODO
@@ -35,7 +38,6 @@ class FractureMechanicsComponents():
         self.bs7910_2013_flaw_growth.get_initial_allowable_flaw_for_life(self.histograms_df)
 
     def get_histogram_loading(self):
-        from common.data import AttributeDict, ReadData
         read_data = ReadData()
         cfg_temp = AttributeDict()
         cfg_temp['files'] = self.cfg.loading['histograms']
@@ -70,7 +72,6 @@ class FractureMechanicsComponents():
         self.create_viz_flaw_growth_rates()
 
     def create_viz_fatigue_assessment_diagrams(self):
-        from common.visualizations import Visualization
         viz_data = Visualization()
         plt_settings = self.cfg['plot_settings'][0]
         plt_settings.update({'file_name': self.cfg['Analysis']['result_folder'] + self.cfg['Analysis'][
@@ -82,7 +83,6 @@ class FractureMechanicsComponents():
         viz_data.save_and_close()
 
     def create_viz_unstable_fracture_limits(self):
-        from common.visualizations import Visualization
         viz_data = Visualization()
         plt_settings = self.cfg['plot_settings'][1]
         plt_settings.update({'file_name': self.cfg['Analysis']['result_folder'] + self.cfg['Analysis'][
@@ -111,7 +111,6 @@ class FractureMechanicsComponents():
         self.create_viz_flaw_growth_by_flaw_orientation()
 
     def create_viz_min_init_flaw_by_component(self):
-        from common.visualizations import Visualization
         viz = Visualization()
         min_init_df = self.bs7910_2013_flaw_growth.initial_allowable_flaw_df
         for cfg_component_index in range(0, len(self.cfg.loading['histograms']['from_xlsx'][0]['component_index'])):
@@ -144,7 +143,6 @@ class FractureMechanicsComponents():
                 viz.save_and_close()
 
     def create_viz_min_init_flaw_by_service_life(self):
-        from common.visualizations import Visualization
         viz = Visualization()
         min_init_df = self.bs7910_2013_flaw_growth.initial_allowable_flaw_df
 
@@ -180,7 +178,6 @@ class FractureMechanicsComponents():
                 viz.save_and_close()
 
     def create_viz_min_init_flaw_by_flaw_location(self):
-        from common.visualizations import Visualization
         viz = Visualization()
         min_init_df = self.bs7910_2013_flaw_growth.initial_allowable_flaw_df
         for location_item in self.cfg.default['settings']['location_array']:
@@ -215,7 +212,6 @@ class FractureMechanicsComponents():
                 viz.save_and_close()
 
     def create_viz_min_init_flaw_by_flaw_orientation(self):
-        from common.visualizations import Visualization
         viz = Visualization()
         min_init_df = self.bs7910_2013_flaw_growth.initial_allowable_flaw_df
 
@@ -251,7 +247,6 @@ class FractureMechanicsComponents():
                 viz.save_and_close()
 
     def create_viz_flaw_growth_by_component(self):
-        from common.visualizations import Visualization
         viz = Visualization()
         growth_df = self.bs7910_2013_flaw_growth.flaw_growth_df
         for cfg_component_index in range(0, len(self.cfg.loading['histograms']['from_xlsx'][0]['component_index'])):
@@ -295,7 +290,6 @@ class FractureMechanicsComponents():
 
 
     def init_add_pipe_properties_to_cfg(self):
-        from custom.PipeSizing import PipeSizing
 
         pipe_sizing = PipeSizing(self.cfg)
         property_dictionary = pipe_sizing.get_pipe_system_properties()

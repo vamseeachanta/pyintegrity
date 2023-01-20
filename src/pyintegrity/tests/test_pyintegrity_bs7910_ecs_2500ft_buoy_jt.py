@@ -4,16 +4,16 @@ import sys
 from pyintegrity.common.ymlInput import ymlInput
 from pyintegrity.common.update_deep import AttributeDict
 from pyintegrity.common.ApplicationManager import ConfigureApplicationInputs
-from pyintegrity.API579 import API579
+from pyintegrity.fracture_mechanics import fracture_mechanics
 
-ymlfile = 'src/pyintegrity/tests/test_data/12in_oil_cml28_input.yml'
+ymlfile = 'src/pyintegrity/tests/test_data/fracture_mechanics/fracture_mechanics_py_ecs_2500ft_buoy_jt.yml'
 sys.argv.append(ymlfile)
 print(os.path.isfile(ymlfile))
 cfg = ymlInput(ymlfile, updateYml=None)
 cfg = AttributeDict(cfg)
 
-basename = 'API579'
+basename = 'fracture_mechanics'
 application_manager = ConfigureApplicationInputs(basename)
 application_manager.configure(run_dict=None)
 
-cfg_base = API579(application_manager.cfg)
+cfg_base = fracture_mechanics(application_manager.cfg)
