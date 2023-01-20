@@ -1,0 +1,22 @@
+name: pyintegrity
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python
+  - pandas
+  - numpy
+  - pip
+  - pip:
+      - plotly
+      - dash
+      - pyyaml
+      - bumpver
+      - webcolors
+      - pyyaml
+      - openpyxl
+      - matplotlib
+      - xlrd
+      - sklearn
+      - pyparsing
+      - six

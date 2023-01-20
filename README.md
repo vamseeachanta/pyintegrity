@@ -15,6 +15,8 @@ Fitness for service assessment is the analysis both the present integrity of the
 
 # Usage
 
+## General
+
 See examples files to set up the General Metal Loss (GML) and Local Metal Loss (LML) analysis:
 - GML and LML, ASME B31.8 design code, see [12in_oil_cml28](https://github.com/vamseeachanta/pyintegrity/blob/c61594eff1455ca7741b3a61ab55e44495bb1eee/src/pyintegrity/tests/test_pyintegrity_gml_lml_b314_1.py)
 - GML and LML, API 1111 design code, see [16in_gas](https://github.com/vamseeachanta/pyintegrity/blob/c61594eff1455ca7741b3a61ab55e44495bb1eee/src/pyintegrity/tests/test_pyintegrity_gml_lml_b318_1.py)
@@ -24,6 +26,14 @@ The high level methodologies for the general metal loss (GML) and local metal lo
 <img src="docs/ffs_methodology_local_metal.svg" width=auto, height=auto/>
 
 The detailed steps implemented in pyintegrity are per API 579, 2016 code. 
+
+## Run tests and modify
+
+A quick way to get to a running code is:
+- Download this [pyintegrity repository](https://github.com/vamseeachanta/pyintegrity)
+- Run the following batch files
+    - Create a virtual environment:
+        - Use [conda yaml file]() to create a fresh envi or by installing pyintegrity package in an enviro
 
 # Assumptions
 
