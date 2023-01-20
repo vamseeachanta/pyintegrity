@@ -33,7 +33,12 @@ A quick way to get to a running code is:
 - Download this [pyintegrity repository](https://github.com/vamseeachanta/pyintegrity)
 - Run the following batch files
     - Create a virtual environment:
-        - Use [conda yaml file]() to create a fresh envi or by installing pyintegrity package in an enviro
+        - Use [conda yaml file](https://raw.githubusercontent.com/vamseeachanta/pyintegrity/master/dev_tools/environment.yml) to create a fresh environment
+        - (or) by installing [pyintegrity]((https://github.com/vamseeachanta/pyintegrity)) package in an environment
+    - Change command line to "pyintegrity" (outside not in src) folder
+    - Run the following batch files in tests:
+        - python src\pyintegrity\tests\tests_api579.bat
+        - python src\pyintegrity\tests\tests_fracture_mechanics.bat
 
 # Assumptions
 
