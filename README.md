@@ -29,12 +29,13 @@ The detailed steps implemented in pyintegrity are per API 579, 2016 code.
 
 ## Run tests and modify
 
-A quick way to get to a running code is:
-- Download this [pyintegrity repository](https://github.com/vamseeachanta/pyintegrity)
+A quick way to running code is:
+- Create a virtual environment:
+    - Use [conda yaml file](https://raw.githubusercontent.com/vamseeachanta/pyintegrity/master/dev_tools/environment.yml) to create a new environment
+    - (or) by installing [pyintegrity]((https://github.com/vamseeachanta/pyintegrity)) package in an environment
 - Run the following batch files
-    - Create a virtual environment:
-        - Use [conda yaml file](https://raw.githubusercontent.com/vamseeachanta/pyintegrity/master/dev_tools/environment.yml) to create a fresh environment
-        - (or) by installing [pyintegrity]((https://github.com/vamseeachanta/pyintegrity)) package in an environment
+    - Download this [pyintegrity repository](https://github.com/vamseeachanta/pyintegrity)
+    - activate environment
     - Change command line to "pyintegrity" (outside not in src) folder
     - Run the following batch files in tests:
         - python src\pyintegrity\tests\tests_api579.bat
@@ -67,3 +68,5 @@ Key references used for the package development are:
 | Autodesk Codeware INSPECT GML & LML | General and Local Metal Loss | [General and Local Metal Loss](https://www.codeware.com/products/inspect/general-and-local-metal-loss/) |
 | QuestIntegrity SignalFFS | Signal Fitness-For-Service (FFS) performs fitness-for-purpose and fracture mechanics analysis on fixed and rotating equipment. | [SignalFFS](https://www.questintegrity.com/software-products/signal-fitness-for-service/) |
 | BMT FlawCheck | Structural Integrity Assessment Tool | [Flawcheck](https://www.bmt.org/our-innovations/bmt-flawcheck/) |
+| Blade Energy Dent Analyzer™ | Strain Based Dent Analysis tool for pipeline integrity management based on ASME B31.8 Appendix R and improved strain equation for pipeline industry | [Dent Analyzer™](https://www.blade-energy.com/software/) |
+| Blade Energy Crack Analyzer™ | Crack assessment tool for pipeline integrity management based on API 579 and BS 7910 for pipeline industry | [Crack Analyzer™](https://www.blade-energy.com/software/) |
