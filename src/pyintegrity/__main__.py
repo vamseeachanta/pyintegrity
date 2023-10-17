@@ -18,3 +18,7 @@ Version:
 
 - pyintegrity v0.0.1
 """
+
+from pyintegrity.engine import engine
+
+engine()

@@ -24,7 +24,8 @@ requires-python = ">=3.7"
     dev   = ["black", "bumpver", "isort", "mypy", "pytest"]
 
     [project.scripts]
-    ffs_analysis = "pyintegrity.API579"
+    pyitegrity_analysis = "pyintegrity:__main__"
+
 
     [project.urls]
     repository    = "https://github.com/vamseeachanta/pyintegrity"
@@ -44,8 +45,8 @@ push            = false
         'current_version = "{version}"',
         'version = "{version}"',
     ]
-    "src/lmfa/__init__.py" = ["{version}"]
-    "src/lmfa/__main__.py" = ["- leveraged-multi-family-analysis v{version}"]
+    "src/pyintegrity/__init__.py" = ["{version}"]
+    "src/pyintegrity/__main__.py" = ["- pyintegrity v{version}"]
 
 [tool.isort]
 profile                   = "black"

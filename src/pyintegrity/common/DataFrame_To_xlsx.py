@@ -18,7 +18,7 @@ def DataFrame_To_xlsx_xlsxwriter(df, data):
 
 
     df.to_excel(writer, data['SheetName'])
-    writer.save()
+    writer._save()
 
 """
 References:
@@ -44,7 +44,7 @@ def DataFrame_To_xlsx_openpyxl(df, data):
         # WorkSheet = wb.add_worksheet(data['SheetName'])
 
     df.to_excel(writer, data['SheetName'])
-    writer.save()
+    writer._save()
 """
 References:
 https://stackoverflow.com/questions/24917201/applying-borders-to-a-cell-in-openpyxl
@@ -74,7 +74,7 @@ def DataFrameArray_To_xlsx_openpyxl(dfArray, data):
         #     columns = len(dfArray[dfIndex].columns)+1
         #     ws.cell(row=rows, column=columns).border = thin_border
 
-    writer.save()
+    writer._save()
 
 if __name__ == '__main__':
     import numpy as np

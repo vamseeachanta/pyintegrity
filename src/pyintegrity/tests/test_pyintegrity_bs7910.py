@@ -1,3 +1,4 @@
+# Logging should be improved. Too much noise on screen from possibly multiple threads.
 import os
 import sys
 

@@ -5,13 +5,12 @@ Fitness for service assessment is the analysis both the present integrity of the
 # Summary
 
 **#TODO**
-- Refactor input file as follows
-    - Divide app configuration data from input file to avoid confusion
-    - Extract pipe capacity evaluation as a separate library (i.e. github and pypi)
-- Currently .xlsx is supported for wall thickness grid data. Change to simple .csv
+- Refactor input file as follows 
+    - Refer to pipe capacity evaluation from pipecapacity (i.e. github and pypi). simplifies master input file further
+- Currently .xlsx is supported for wall thickness grid data. Change to simple .csv 
 - Results are dumped into single folder
     - Divide them into high-level and detailed results into respective folders
-- The detailed technical steps implemented pyintegrity are to be documented. 
+- The detailed documentation of pyintegrity technical steps. 
 
 # Usage
 

@@ -1,3 +1,5 @@
+basename: API579
+
 Default:
   Analysis:
     GML:
@@ -6,7 +8,7 @@ Default:
     LML: True
   Units: inch
 ReadingSets:
-  - io: src/pyintegrity/tests/test_data/API579/16in_gas_wt_grid.xlsx
+  - io: tests/test_data/API579/16in_gas_wt_grid.xlsx
     sheet_name: Sheet1
     index_col: 0
     skiprows: 0
@@ -156,7 +158,7 @@ DesignFactors:
 
 LML:
   LTA:
-    - io: src/pyintegrity/tests/test_data/API579/16in_gas_wt_grid.xlsx
+    - io: tests/test_data/API579/16in_gas_wt_grid.xlsx
       sheet_name: Sheet1
       index_col: 0
       skiprows: 0
@@ -190,7 +192,7 @@ LML:
       FCAs: NULL
       FCAc: NULL
       FCANonFlawRatio: 0.25
-    - io: src/pyintegrity/tests/test_data/API579/16in_gas_wt_grid.xlsx
+    - io: tests/test_data/API579/16in_gas_wt_grid.xlsx
       sheet_name: Sheet1
       index_col: 0
       skiprows: 0
@@ -224,7 +226,7 @@ LML:
       FCAs: NULL
       FCAc: NULL
       FCANonFlawRatio: 0.25
-    - io: src/pyintegrity/tests/test_data/API579/16in_gas_wt_grid.xlsx
+    - io: tests/test_data/API579/16in_gas_wt_grid.xlsx
       sheet_name: Sheet1
       index_col: 0
       skiprows: 0
@@ -258,7 +260,7 @@ LML:
       FCAs: NULL
       FCAc: NULL
       FCANonFlawRatio: 1.00
-    - io: src/pyintegrity/tests/test_data/API579/16in_gas_wt_grid.xlsx
+    - io: tests/test_data/API579/16in_gas_wt_grid.xlsx
       sheet_name: Sheet1
       index_col: 0
       skiprows: 0

@@ -49,6 +49,8 @@ class API579_components():
             self.plot_and_save_gml_results(Acceptable_FCA, GMLMAWPResultsDF,
                                            fileIndex)
 
+        return self.cfg
+
     def plot_and_save_gml_results(self, Acceptable_FCA, GMLMAWPResultsDF,
                                   fileIndex):
 
@@ -390,6 +392,8 @@ class API579_components():
             }
             DataFrameArray_To_xlsx_openpyxl(LMLSummaryDFArray, customdata)
 
+        return self.cfg
+
     def b31g(self):
         from results.API579.customInputs import ExcelRead
         from results.API579.plotCustom import plotCustom
@@ -439,6 +443,8 @@ class API579_components():
             }
 
             plotCustom(df, customdata)
+
+        return self.cfg
 
     def read_gml_grids(self):
         if self.cfg.default['Analysis']['GML']['data_source'] == 'xlsx':

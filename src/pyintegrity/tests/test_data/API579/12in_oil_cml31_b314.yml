@@ -1,3 +1,5 @@
+basename: API579
+
 Default:
   Analysis:
     GML:
@@ -7,7 +9,7 @@ Default:
   Units: inch
 
 ReadingSets: # Used for GML
-  - io: src/pyintegrity/tests/test_data/API579/12in_oil_cml31.xlsx
+  - io: tests/test_data/API579/12in_oil_cml31.xlsx
     sheet_name: Sheet1
     index_col: 0
     skiprows: 0
@@ -150,7 +152,7 @@ DesignFactors:
 
 LML:
   LTA:
-    - io: src/pyintegrity/tests/test_data/API579/12in_oil_cml31.xlsx
+    - io: tests/test_data/API579/12in_oil_cml31.xlsx
       sheet_name: Sheet1
       index_col: 0
       skiprows: 0

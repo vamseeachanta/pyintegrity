@@ -8,15 +8,16 @@ def API579(cfg):
     api579_components = API579_components(cfg)
 
     if cfg['default']['Analysis']['GML']['Circumference']:
-        api579_components.gml()
+        cfg = api579_components.gml()
 
     if cfg['default']['Analysis']['LML']:
-        api579_components.lml()
+        cfg = api579_components.lml()
 
     if cfg['default']['Analysis']['B31G']:
-        api579_components.b31g()
+        cfg = api579_components.b31g()
 
     t_end = datetime.now()
     print("Time taken to process: {0} seconds".format(
         (t_end - t_start).seconds))
 
+    return cfg
