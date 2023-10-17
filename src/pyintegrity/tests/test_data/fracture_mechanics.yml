@@ -24,6 +24,7 @@ default:
     welded_joints: False
     thin_pipe: True
     cylinder: False
+
   settings:
     multi_process: True
     ctod: 0.254
@@ -95,7 +96,7 @@ default:
   stress_intensity_factor_solution_tables:
     from_xlsx:
       - label: bs7910_stress_intensity_tables
-        io: src/pyintegrity/tests/test_data/fracture_mechanics/bs7910_stress_intensity_solutions.xlsx
+        io: tests/test_data/fracture_mechanics/bs7910_stress_intensity_solutions.xlsx
 
 flaw:
   geometry: thin_pipe
@@ -130,7 +131,7 @@ loading:
   histograms:
     from_xlsx:
       - label: combined_histograms
-        io: src/pyintegrity/tests/test_data/histograms/2500ft_WT0750_064pcf_combined_histograms.xlsx
+        io: tests/test_data/histograms/2500ft_WT0750_064pcf_combined_histograms.xlsx
         sheet_name: combined_fatigue
         #        component_index: [10, 11]
         component_index: [11]

@@ -174,11 +174,11 @@ class WorkingWithYAML():
 
     def get_library_filename(self, cfg):
 
+        filename_with_lib_path = cfg['filename']
         if not os.path.isfile(cfg['filename']):
             lib_spec = importlib.util.find_spec(library_name)
             lib_path = Path(lib_spec.origin).parent
             filename_with_lib_path = os.path.join(lib_path, cfg['filename'])
             if not os.path.isfile(filename_with_lib_path):
                 raise FileNotFoundError()
-
         return filename_with_lib_path
