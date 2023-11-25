@@ -10,7 +10,7 @@ dictitems:
     file_name_for_overwrite: app_fracture_mechanics_fracture_mechanics_py_circumferential_parallel_process
     log_folder: test_data/fracture_mechanics\logs\
     result_folder: test_data/fracture_mechanics\results\
-    start_time: 2023-10-17 14:29:51.012585
+    start_time: 2023-10-17 14:30:14.200964
   Inner_Pipe: null
   Material:
     Steel:
